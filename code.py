@@ -7,8 +7,6 @@ Created on Mon May 16 08:56:44 2022
 
 import pandas as pd
 import numpy as np
-import os
-os.chdir("C:\\Myfiles\\preprocess")
 
 from collections import defaultdict
 import streamlit as st
