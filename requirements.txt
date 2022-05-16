@@ -1,0 +1,2 @@
+openpyxl==3.0.9
+xpinyin==0.7.6
