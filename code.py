@@ -14,6 +14,7 @@ col1, col2= st.columns([2,2])
 
 import time
 import pip
+pip.main(["install", "openpyxl"])
 pip.main(["install", "xpinyin"])
 from xpinyin import Pinyin
 p=Pinyin()
