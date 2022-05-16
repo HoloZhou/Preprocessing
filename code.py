@@ -10,7 +10,7 @@ import numpy as np
 
 from collections import defaultdict
 import streamlit as st
-col1, col2= st.columns([2,2])
+col1, col2= st.columns([2,1])
 
 import time
 import pip
@@ -23,7 +23,7 @@ from PIL import Image
 image_1 = Image.open('image_1.png')
 
 #初始化表格
-output=pd.DataFrame(columns=['药物','分类','药味','药性','翻译','拼音'])
+output=pd.DataFrame(outputcolumns=['药物','分类','药味','药性','归经','翻译','拼音'])
 
 
 #药味的一键多值字典
