@@ -581,7 +581,8 @@ output_cate = output['分类']
 output_cate = list(output_cate)
 output_cate = pd.DataFrame(output_cate, columns=['分类'], index=output['药物'])
 output_cate.dropna(axis=0, inplace=True, how="any")
-output_cate = output_cate.reset_index(drop=False, inplace=False)
+output_cate = output_cate.reset_index()
+output_cate = output_cate.drop_duplicates(subset=['药物'])
 
 # 翻译与拼音columns
 output_t = output['翻译']
@@ -596,7 +597,7 @@ output_tnp = output_t["翻译"].map(str) + output_p["拼音"].map(str)
 output_tnp = output_wei.reset_index(drop=False, inplace=False)
 
 # 合并所有元素
-out_final1 = pd.concat([output_dr, output_wei, output_xing, output_jing], axis=1,
+out_final1 = out_final1 = pd.concat([output_dr, output_wei, output_xing, output_jing,output_tnp,output_cate], axis=1,
                       ignore_index=False, join="outer")
 out_final2 = output_t
 out_final3 = output_cate
