@@ -126,10 +126,10 @@ with st.sidebar:
     st.text('3.只支持xls或xlsx文件')
     st.text('4.参考下图格式\n（表格底色可忽略）')
     st.image(image_1)
-file=pd.read_excel('C:\\Users\\Zhou N\\Desktop\\try.xlsx')
+#file=pd.read_excel('C:\\Users\\Zhou N\\Desktop\\try.xlsx')
 
 if file is not None:
-    #file=pd.read_excel(file)
+    file=pd.read_excel(file)
     file = pd.DataFrame(file)
     for index, row in file.iterrows():
         for i in row:
