@@ -621,15 +621,15 @@ with col2:
     if out_final4 is not None:
         excel = convert_df(out=out_final4)
         st.download_button(label="点击此处下载归经纵表", data=excel,
-                           file_name='性味归经纵表.csv', mime='csv')
+                           file_name='归经纵表.csv', mime='csv')
     if out_final5 is not None:
         excel = convert_df(out=out_final5)
         st.download_button(label="点击此处下载药性纵表", data=excel,
-                           file_name='性味药性纵表.csv', mime='csv')
+                           file_name='药性纵表.csv', mime='csv')
     if out_final6 is not None:
         excel = convert_df(out=out_final6)
         st.download_button(label="点击此处下载药味纵表", data=excel,
-                           file_name='性味药味纵表.csv', mime='csv') 
+                           file_name='药味纵表.csv', mime='csv') 
         
     if out_final2 is not None:
         excel = convert_df(out=out_final2)
