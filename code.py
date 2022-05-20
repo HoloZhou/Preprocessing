@@ -122,9 +122,8 @@ with col1:
 with st.sidebar:
     st.subheader('请严格以下要求提供原始数据')
     st.text('1.所有药物排成一列')
-    st.text('2.首行从药物开始，不要有列名\n（输出结果中会自动加列名）')
-    st.text('3.只支持xls或xlsx文件')
-    st.text('4.参考下图格式\n（表格底色可忽略）')
+    st.text('2.只支持xls或xlsx文件')
+    st.text('3.参考下图格式\n（表格底色可忽略）')
     st.image(image_1)
 #file=pd.read_excel('C:\\Users\\Zhou N\\Desktop\\try.xlsx')
 
