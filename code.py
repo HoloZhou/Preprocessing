@@ -10,6 +10,7 @@ from xpinyin import Pinyin
 import pip
 import time
 import streamlit as st
+col1, col2=st.columns([2,1])
 from collections import defaultdict
 import pandas as pd
 import numpy as np
