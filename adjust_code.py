@@ -13,9 +13,7 @@ import streamlit as st
 from collections import defaultdict
 import pandas as pd
 import numpy as np
-import os
-os.chdir('C:\\Myfiles\\preprocess\\Preprocessing')
-col1, col2 = st.columns([2, 1])
+
 
 pip.main(["install", "openpyxl"])
 pip.main(["install", "xpinyin"])
@@ -135,10 +133,8 @@ with st.sidebar:
     st.image(image_1)
 
 
-file = pd.read_excel('C:\\Users\\Zhou N\\Desktop\\翻译.xlsx')
-
 if file is not None:
-    # file=pd.read_excel(file)
+    file=pd.read_excel(file)
     file = pd.DataFrame(file)
     for index, row in file.iterrows():
         for i in row:
