@@ -6,18 +6,12 @@ Created on Fri May 20 20:44:25 2022
 """
 
 from PIL import Image
-from xpinyin import Pinyin
-import pip
-import time
 import streamlit as st
 col1, col2=st.columns([2,1])
 from collections import defaultdict
 import pandas as pd
 import numpy as np
-
-
-pip.main(["install", "openpyxl"])
-pip.main(["install", "xpinyin"])
+from xpinyin import Pinyin
 p = Pinyin()
 
 image_1 = Image.open('image_1.png')
@@ -132,10 +126,10 @@ with st.sidebar:
     st.text('3.只支持xls或xlsx文件')
     st.text('4.参考下图格式\n（表格底色可忽略）')
     st.image(image_1)
-
+file=pd.read_excel('C:\\Users\\Zhou N\\Desktop\\try.xlsx')
 
 if file is not None:
-    file=pd.read_excel(file)
+    #file=pd.read_excel(file)
     file = pd.DataFrame(file)
     for index, row in file.iterrows():
         for i in row:
@@ -549,7 +543,8 @@ output_dr = output_dr.drop_duplicates()
 out_wei = output['药味']
 out_wei = list(out_wei)
 out_wei = pd.DataFrame(out_wei, columns=['药味'], index=output['药物'])
-output_wei = out_wei.dropna(axis=0, inplace=True, how="any")
+out_wei.dropna(axis=0, inplace=True, how="any")
+output_wei = out_wei
 output_wei['COUNT'] = 1
 output_wei = output_wei.pivot_table(
     'COUNT', index=['药物'], columns=['药味']).fillna(0)
@@ -559,7 +554,8 @@ output_wei = output_wei.pivot_table(
 out_xing = output['药性']
 out_xing = list(out_xing)
 out_xing = pd.DataFrame(out_xing, columns=['药性'], index=output['药物'])
-output_xing = out_xing.dropna(axis=0, inplace=True, how="any")
+out_xing.dropna(axis=0, inplace=True, how="any")
+output_xing = out_xing
 output_xing['COUNT'] = 1
 output_xing = output_xing.pivot_table(
     'COUNT', index=['药物'], columns=['药性']).fillna(0)
@@ -569,7 +565,8 @@ output_xing = output_xing.pivot_table(
 out_jing = output['归经']
 out_jing = list(out_jing)
 out_jing = pd.DataFrame(out_jing, columns=['归经'], index=output['药物'])
-output_jing = out_jing.dropna(axis=0, inplace=True, how="any")
+out_jing.dropna(axis=0, inplace=True, how="any")
+output_jing = out_jing
 output_jing['COUNT'] = 1
 output_jing = output_jing.pivot_table(
     'COUNT', index=['药物'], columns=['归经']).fillna(0)
