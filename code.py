@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 19 10:18:47 2022
+Created on Fri May 20 20:44:25 2022
 
 @author: Zhou N
 """
@@ -546,30 +546,30 @@ output_dr = pd.DataFrame(output_dr, columns=['药物'], index=output['药物'])
 output_dr = output_dr.drop_duplicates()
 
 # 药味pivot
-output_wei = output['药味']
-output_wei = list(output_wei)
-output_wei = pd.DataFrame(output_wei, columns=['药味'], index=output['药物'])
-output_wei.dropna(axis=0, inplace=True, how="any")
+out_wei = output['药味']
+out_wei = list(out_wei)
+out_wei = pd.DataFrame(out_wei, columns=['药味'], index=output['药物'])
+output_wei = out_wei.dropna(axis=0, inplace=True, how="any")
 output_wei['COUNT'] = 1
 output_wei = output_wei.pivot_table(
     'COUNT', index=['药物'], columns=['药味']).fillna(0)
 
 
 # 药性pivot
-output_xing = output['药性']
-output_xing = list(output_xing)
-output_xing = pd.DataFrame(output_xing, columns=['药性'], index=output['药物'])
-output_xing.dropna(axis=0, inplace=True, how="any")
+out_xing = output['药性']
+out_xing = list(out_xing)
+out_xing = pd.DataFrame(out_xing, columns=['药性'], index=output['药物'])
+output_xing = out_xing.dropna(axis=0, inplace=True, how="any")
 output_xing['COUNT'] = 1
 output_xing = output_xing.pivot_table(
     'COUNT', index=['药物'], columns=['药性']).fillna(0)
 
 
 # 归经pivot
-output_jing = output['归经']
-output_jing = list(output_jing)
-output_jing = pd.DataFrame(output_jing, columns=['归经'], index=output['药物'])
-output_jing.dropna(axis=0, inplace=True, how="any")
+out_jing = output['归经']
+out_jing = list(out_jing)
+out_jing = pd.DataFrame(out_jing, columns=['归经'], index=output['药物'])
+output_jing = out_jing.dropna(axis=0, inplace=True, how="any")
 output_jing['COUNT'] = 1
 output_jing = output_jing.pivot_table(
     'COUNT', index=['药物'], columns=['归经']).fillna(0)
@@ -601,6 +601,9 @@ out_final1 = out_final1 = pd.concat([output_dr, output_wei, output_xing, output_
                       ignore_index=False, join="outer")
 out_final2 = output_t
 out_final3 = output_cate
+out_final4 = out_jing
+out_final5 = out_xing
+out_final6 = out_wei
 
 
 #问题出在pivot一步，pivot会自动合并相同值
@@ -616,23 +619,27 @@ with col2:
     st.subheader('文件下载区')
     if out_final1 is not None:
         excel = convert_df(out=out_final1)
-        st.download_button(label="点击此处下载性味归经数据", data=excel,
+        st.download_button(label="点击此处下载性味归经矩阵", data=excel,
                            file_name='性味归经数据.csv', mime='csv')
-        
+    if out_final4 is not None:
+        excel = convert_df(out=out_final4)
+        st.download_button(label="点击此处下载归经纵表", data=excel,
+                           file_name='性味归经纵表.csv', mime='csv')
+    if out_final5 is not None:
+        excel = convert_df(out=out_final5)
+        st.download_button(label="点击此处下载药性纵表", data=excel,
+                           file_name='性味药性纵表.csv', mime='csv')
+    if out_final6 is not None:
+        excel = convert_df(out=out_final6)
+        st.download_button(label="点击此处下载药味纵表", data=excel,
+                           file_name='性味药味纵表.csv', mime='csv') 
         
     if out_final2 is not None:
         excel = convert_df(out=out_final2)
         st.download_button(label="点击此处下载翻译数据", data=excel,
                            file_name='翻译数据.csv', mime='csv')
-        
-        
-    if out_final2 is not None:
+    if out_final3 is not None:
         excel = convert_df(out=out_final3)
         st.download_button(label="点击此处下载分类数据", data=excel,
                            file_name='分类数据.csv', mime='csv')
         st.text("注：转换完成的数据是CSV格式")
-
-
-    
-
-    
