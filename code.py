@@ -597,7 +597,7 @@ output_tnp = output_t["翻译"].map(str) + output_p["拼音"].map(str)
 output_tnp = output_wei.reset_index(drop=False, inplace=False)
 
 # 合并所有元素
-out_final1 = out_final1 = pd.concat([output_dr, output_wei, output_xing, output_jing,output_tnp], axis=1,
+out_final1 = out_final1 = pd.concat([output_dr, output_wei, output_xing, output_jing], axis=1,
                       ignore_index=False, join="outer")
 out_final2 = output_t
 out_final3 = output_cate
