@@ -577,8 +577,7 @@ output_cate = output['分类']
 output_cate = list(output_cate)
 output_cate = pd.DataFrame(output_cate, columns=['分类'], index=output['药物'])
 output_cate.dropna(axis=0, inplace=True, how="any")
-output_cate = output_cate.reset_index()
-output_cate = output_cate.drop_duplicates(subset=['药物'])
+
 
 # 翻译与拼音columns
 output_t = output['翻译']
