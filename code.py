@@ -632,7 +632,7 @@ with col2:
     if out_final7 is not None:
         excel = convert_df(out=out_final7)
         st.download_button(label="点击此处下载翻译与拼音", data=excel,
-                           file_name='翻译与拼音（去重）.csv', mime='csv') 
+                           file_name='翻译与拼音.csv', mime='csv') 
         
     if out_final2 is not None:
         excel = convert_df(out=out_final2)
