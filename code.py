@@ -589,7 +589,7 @@ output_p = pd.DataFrame(output_p, columns=['拼音'], index=output['药物'])
 output_t.dropna(axis=0, inplace=True, how="any")
 output_p.dropna(axis=0, inplace=True, how="any")
 output_tnp = output_t["翻译"].map(str) + output_p["拼音"].map(str)
-output_tnp = output_wei.reset_index(drop=False, inplace=False)
+
 
 # 合并所有元素
 out_final1 = out_final1 = pd.concat([output_dr, output_wei, output_xing, output_jing], axis=1,
@@ -599,7 +599,7 @@ out_final3 = output_cate
 out_final4 = out_jing
 out_final5 = out_xing
 out_final6 = out_wei
-
+out_final7 = output_tnp
 
 #问题出在pivot一步，pivot会自动合并相同值
 #不要全合并，分成两个供下载
@@ -628,6 +628,11 @@ with col2:
         excel = convert_df(out=out_final6)
         st.download_button(label="点击此处下载药味纵表", data=excel,
                            file_name='药味纵表.csv', mime='csv') 
+    
+    if out_final7 is not None:
+        excel = convert_df(out=out_final7)
+        st.download_button(label="点击此处下载翻译与拼音", data=excel,
+                           file_name='翻译与拼音（去重）.csv', mime='csv') 
         
     if out_final2 is not None:
         excel = convert_df(out=out_final2)
